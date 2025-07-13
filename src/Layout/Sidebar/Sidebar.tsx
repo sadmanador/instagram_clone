@@ -1,41 +1,19 @@
-
 const Sidebar = () => {
   return (
-    <div >
-     
-      <ul className="">
+    <div className="sidebar">
+      <h2>Sidebar</h2>
+      <ul>
         <li>
-          <a>Home</a>
+          <a href="#home">Home</a>
         </li>
         <li>
-          <a>Search</a>
+          <a href="#about">About</a>
         </li>
         <li>
-          <a>Explore</a>
+          <a href="#services">Services</a>
         </li>
         <li>
-          <a>Reels</a>
-        </li>
-        <li>
-          <a>Messages</a>
-        </li>
-        <li>
-          <a>Notifications</a>
-        </li>
-        <li>
-          <a>Create</a>
-        </li>
-        <li>
-          <a>Profile</a>
-        </li>
-        <li>
-          <a>Threads</a>
-        </li>
-        <li>
-          <a>More</a>
-        </li>
-        <li>
-          <a>Dark mode switch</a>
+          <a href="#contact">Contact</a>
         </li>
       </ul>
     </div>
