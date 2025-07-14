@@ -35,7 +35,7 @@ const Sidebar = () => {
           <img
             src="https://www.vectorlogo.zone/logos/instagram/instagram-wordmark.svg"
             alt=""
-            className="w-28 h-12"
+            className={`w-28 h-12 ${theme === "light" ? "" : "filter invert"}`}
           />
         ) : (
           <Instagram className="text-3xl"/>
