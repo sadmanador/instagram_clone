@@ -1,16 +1,23 @@
+import { useContext } from "react";
+import { SidebarToggleContext } from "../context/SidebarContext/SidebarContext";
 import Home from "../pages/Home/Home";
 import Sidebar from "./Sidebar/Sidebar";
 
 const Main = () => {
+  const { sidebar } = useContext(SidebarToggleContext);
+
   return (
-    <div className="flex h-60">
-      <aside className=" flex-none  p-4">
-        <Sidebar />
-      </aside>
-      <main className="min-w-0 flex-1 overflow-auto  p-4">
+    <>
+      <Sidebar />
+
+      <div
+        className={`${
+          sidebar ? "md:pl-[17%]" : "md:pl-[7%]"
+        }  pt-5 pb-5 px-[3%] ${sidebar ? "" : "lg:pl-20"}`}
+      >
         <Home />
-      </main>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,2 +1,51 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.sidebar {
+  @apply hidden md:block fixed top-0 h-screen pt-20 pl-[2%];
+  width: 15%;
+}
+
+.shortcut-links img {
+  @apply w-5 mr-5;
+}
+
+.side-link {
+  @apply flex items-center mb-3 cursor-pointer w-fit flex-wrap;
+}
+
+.side-menu {
+  @apply hover:bg-base-300 rounded-lg py-1 w-full pl-2;
+}
+
+.sidebar hr {
+  @apply border-0 h-px bg-base-300 w-[85%];
+}
+
+.subscribed-list h3 {
+  @apply text-sm my-5 text-gray-500;
+}
+
+.subscribed-list img {
+  @apply w-6 rounded-full mr-3;
+}
+
+.small-sidebar {
+  @apply w-[5%];
+}
+
+.small-sidebar p {
+  @apply hidden;
+}
+
+.small-sidebar h3 {
+  @apply hidden;
+}
+
+.small-sidebar hr {
+  @apply w-[50%] mb-6;
+}
+
+.side-link.active img {
+  @apply pb-0.5 border-b-4 border-red-500;
+}
