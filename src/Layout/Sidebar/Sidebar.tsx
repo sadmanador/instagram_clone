@@ -1,17 +1,14 @@
 import { useContext } from "react";
-import { SidebarToggleContext } from "../../context/SidebarContext/SidebarContext";
-
 import {
-  MdHomeFilled,
-  MdOutlineExplore,
-  MdSearch,
-  MdOutlineOndemandVideo,
-  MdMessage,
-} from "react-icons/md";
-
-import { FaRegHeart } from "react-icons/fa";
-
-import { FaPlusSquare } from "react-icons/fa";
+  Home,
+  Explore,
+  Search,
+  Reels,
+  Messages,
+  Notification,
+  Create,
+} from "../../utils/icons";
+import { SidebarToggleContext } from "../../context/SidebarContext/SidebarContext";
 
 const Sidebar = () => {
   const { theme, setTheme, sidebar, setSidebar } =
@@ -28,57 +25,74 @@ const Sidebar = () => {
     <div
       className={`sidebar ${
         sidebar ? "" : "small-sidebar"
-      } h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 bg-yellow-300 scrollbar-track-gray-100`}
+      } h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 border-r border-r-gray-600 scrollbar-track-gray-100`}
     >
       <ul>
         <li className="side-link">
-          <MdHomeFilled />
-          <a href="#home" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
+          <Home className="text-3xl" />
+          <a
+            href="#home"
+            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
+          >
             Home
           </a>
         </li>
         <li className="side-link" onClick={() => setSidebar(!sidebar)}>
-          <MdSearch />
-          <a href="#about" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
+          <Search className="text-3xl" />
+          <a
+            href="#about"
+            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
+          >
             Search
           </a>
         </li>
         <li className="side-link">
-          <MdOutlineExplore />
-          <a href="#services" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
+          <Explore className="text-3xl" />
+          <a
+            href="#services"
+            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
+          >
             Explore
           </a>
         </li>
         <li className="side-link">
-          <MdOutlineOndemandVideo />
-          <a href="#contact" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
+          <Reels className="text-3xl" />
+          <a
+            href="#contact"
+            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
+          >
             Reels
           </a>
         </li>
         <li className="side-link">
-          <MdMessage />
-          <a href="#contact" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
+          <Messages className="text-3xl" />
+          <a
+            href="#contact"
+            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
+          >
             Messages
           </a>
         </li>
         <li className="side-link">
-          <FaRegHeart />
-          <a href="#contact" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
+          <Notification className="text-3xl" />
+          <a
+            href="#contact"
+            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
+          >
             Notification
           </a>
         </li>
         <li className="side-link">
-          <FaPlusSquare />
-          <a href="#contact" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
+          <Create className="text-3xl" />
+          <a
+            href="#contact"
+            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
+          >
             Create
           </a>
         </li>
         <li className="side-link">
-          <img
-            src="/assets/jack.png"
-            alt=""
-            className="w-10 h-10 rounded-full"
-          />
+          <img src="/assets/jack.png" alt="" className="w-6 h-6 rounded-full" />
           <a href="#contact" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
             Profile
           </a>
@@ -90,10 +104,10 @@ const Sidebar = () => {
       >
         <input
           type="checkbox"
-          className="toggle toggle-xs mr-2"
+          className="toggle toggle-xs mr-2 "
           defaultChecked
         />
-        <p>{theme === "light" ? "🌙 Switch to Dark" : "☀️ Switch to Light"}</p>
+        <p className="text-xl">{theme === "light" ? "Dark" : "Light"}</p>
       </div>
     </div>
   );
