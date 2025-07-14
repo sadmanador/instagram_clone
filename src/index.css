@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 .sidebar {
-  @apply hidden md:block fixed top-0 h-screen pt-20 pl-[2%];
+  @apply hidden md:block fixed top-0 h-screen pt-6 pl-[2%];
   width: 15%;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .side-link {
-  @apply flex items-center mb-3 cursor-pointer w-fit flex-wrap;
+  @apply flex items-center mb-6 cursor-pointer w-fit flex-wrap;
 }
 
 .side-menu {

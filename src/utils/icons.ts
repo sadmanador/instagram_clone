@@ -10,4 +10,12 @@ import { FaRegHeart as Notification } from "react-icons/fa";
 
 import { FaPlusSquare as Create } from "react-icons/fa";
 
-export { Home, Explore, Search, Reels, Messages, Notification, Create };
+import { BsFillThreadsFill as Thread } from "react-icons/bs";
+
+import { RiMenuLine as Menu } from "react-icons/ri";
+
+import { FaInstagram as Instagram } from "react-icons/fa";
+
+
+
+export { Home, Explore, Search, Reels, Messages, Notification, Create, Thread, Menu, Instagram,  };
