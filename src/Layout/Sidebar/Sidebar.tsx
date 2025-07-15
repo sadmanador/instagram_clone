@@ -28,7 +28,7 @@ const Sidebar = () => {
     <div
       className={`sidebar ${
         sidebar ? "" : "small-sidebar"
-      } h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 border-r border-r-gray-600 scrollbar-track-gray-100`}
+      } h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 border-r border-r-gray-600 scrollbar-track-gray-100 lg:pr-[3%] pr-[1%]`}
     >
       <div>
         {sidebar ? (
@@ -44,8 +44,8 @@ const Sidebar = () => {
 
       <div className="pt-10">
         <ul>
-          <li className="side-link">
-            <Home className="text-3xl" />
+          <li className="side-link ">
+            <Home className="text-3xl " />
             <a
               href="#home"
               className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
