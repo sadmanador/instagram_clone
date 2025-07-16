@@ -1,9 +1,9 @@
 // ExampleComponent.tsx
 
 import { useGetData } from "../../hooks/useGetData";
+import { PEXELS_API_KEY } from "../../utils/keys";
 
-const PEXELS_API_KEY =
-  "t8xx6LqkCNByOl38PjxVHdduzes5bwBXK19jPxtxrL2AKXyBTtamRuRo";
+
 
 export default function Feed() {
   const natureImages = useGetData({
