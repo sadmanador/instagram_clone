@@ -1,17 +1,18 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { SidebarToggleContext } from "../../context/SidebarContext/SidebarContext";
 import {
-  Home,
+  Create,
   Explore,
-  Search,
-  Reels,
+  Home,
+  Instagram,
+  Menu,
   Messages,
   Notification,
-  Create,
+  Reels,
+  Search,
   Thread,
-  Menu,
-  Instagram,
 } from "../../utils/icons";
-import { SidebarToggleContext } from "../../context/SidebarContext/SidebarContext";
 
 const Sidebar = () => {
   const { theme, setTheme, sidebar, setSidebar } =
@@ -38,89 +39,63 @@ const Sidebar = () => {
             className={`w-28 h-12 ${theme === "light" ? "" : "filter invert"}`}
           />
         ) : (
-          <Instagram className="text-3xl"/>
+          <Instagram className="text-xl" />
         )}
       </div>
 
       <div className="pt-10">
-        <ul>
-          <li className="side-link ">
-            <Home className="text-3xl " />
-            <a
-              href="#home"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+        <div>
+          <Link to="/" className="side-link ">
+            <Home className="text-xl " />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               Home
-            </a>
-          </li>
-          <li className="side-link" onClick={() => setSidebar(!sidebar)}>
-            <Search className="text-3xl" />
-            <a
-              href="#about"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+            </p>
+          </Link>
+          <div className="side-link" onClick={() => setSidebar(!sidebar)}>
+            <Search className="text-xl" />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               Search
-            </a>
-          </li>
-          <li className="side-link">
-            <Explore className="text-3xl" />
-            <a
-              href="#services"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+            </p>
+          </div>
+          <Link to="/explore" className="side-link">
+            <Explore className="text-xl" />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               Explore
-            </a>
-          </li>
-          <li className="side-link">
-            <Reels className="text-3xl" />
-            <a
-              href="#contact"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+            </p>
+          </Link>
+          <Link to="/reels" className="side-link">
+            <Reels className="text-xl" />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               Reels
-            </a>
-          </li>
-          <li className="side-link">
-            <Messages className="text-3xl" />
-            <a
-              href="#contact"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+            </p>
+          </Link>
+          <div className="side-link">
+            <Messages className="text-xl" />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               Messages
-            </a>
-          </li>
-          <li className="side-link">
-            <Notification className="text-3xl" />
-            <a
-              href="#contact"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+            </p>
+          </div>
+          <div className="side-link">
+            <Notification className="text-xl" />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               Notification
-            </a>
-          </li>
-          <li className="side-link">
-            <Create className="text-3xl" />
-            <a
-              href="#contact"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+            </p>
+          </div>
+          <div className="side-link">
+            <Create className="text-xl" />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               Create
-            </a>
-          </li>
-          <li className="side-link">
+            </p>
+          </div>
+          <div className="side-link">
             <img
               src="/assets/jack.png"
               alt=""
               className="w-6 h-6 rounded-full"
             />
-            <a
-              href="#contact"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}
-            >
-              Profile
-            </a>
-          </li>
-        </ul>
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>Profile</p>
+          </div>
+        </div>
         <div
           onClick={toggleTheme}
           className="flex flex-row items-center side-link"
@@ -130,31 +105,25 @@ const Sidebar = () => {
             className="toggle toggle-xs mr-2 "
             defaultChecked
           />
-          <p className="text-xl">{theme === "light" ? "Dark" : "Light"}</p>
+          <p className="text-xl">{theme === "light" ? "black" : "light"}</p>
         </div>
       </div>
 
       <div className="pt-10">
-        <ul>
-          <li className="side-link" onClick={() => setSidebar(!sidebar)}>
-            <Thread className="text-3xl" />
-            <a
-              href="#about"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+        <div>
+          <div className="side-link" onClick={() => setSidebar(!sidebar)}>
+            <Thread className="text-xl" />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               Threads
-            </a>
-          </li>
-          <li className="side-link" onClick={() => setSidebar(!sidebar)}>
-            <Menu className="text-3xl" />
-            <a
-              href="#about"
-              className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-            >
+            </p>
+          </div>
+          <div className="side-link" onClick={() => setSidebar(!sidebar)}>
+            <Menu className="text-xl" />
+            <p className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}>
               More
-            </a>
-          </li>
-        </ul>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

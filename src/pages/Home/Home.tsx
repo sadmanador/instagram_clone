@@ -1,13 +1,13 @@
+// Home.tsx
 import Feed from "../../Components/Feed/Feed";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 
 const Home = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4  justify-around">
-      <div className="justify-self-center">
-        <Feed />
-      </div>
-      <div className="justify-self-end">
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_350px] gap-6">
+      <div className="hidden lg:block" /> {/* empty left column */}
+      <Feed />
+      <div className="hidden lg:block">
         <Suggestions />
       </div>
     </div>

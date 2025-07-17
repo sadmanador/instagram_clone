@@ -12,6 +12,7 @@ import {
   Menu,
   Instagram,
 } from "../../utils/icons";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { theme, setTheme, sidebar, setSidebar } =
@@ -19,77 +20,35 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 shadow-sm md:hidden fixed bottom-0 border-t-gray-600 border-t">
-      <ul className="flex justify-around w-full pt-3">
-        <li className="side-link btn btn-ghost">
+      <div className="flex justify-around w-full pt-3">
+        <Link to="/" className="side-link btn btn-ghost">
           <Home className="text-3xl" />
-          <a
-            href="#home"
-            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-          >
-            Home
-          </a>
-        </li>
-        <li className="side-link btn btn-ghost" onClick={() => setSidebar(!sidebar)}>
+        </Link>
+        <div
+          className="side-link btn btn-ghost"
+          onClick={() => setSidebar(!sidebar)}
+        >
           <Search className="text-3xl" />
-          <a
-            href="#about"
-            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-          >
-            Search
-          </a>
-        </li>
-        <li className="side-link btn btn-ghost">
+        </div>
+        <Link to="/explore" className="side-link btn btn-ghost">
           <Explore className="text-3xl" />
-          <a
-            href="#services"
-            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-          >
-            Explore
-          </a>
-        </li>
-        <li className="side-link btn btn-ghost">
+        </Link>
+        <Link to="/reels" className="side-link btn btn-ghost">
           <Reels className="text-3xl" />
-          <a
-            href="#contact"
-            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-          >
-            Reels
-          </a>
-        </li>
-        <li className="side-link btn btn-ghost">
+        </Link>
+        <div className="side-link btn btn-ghost">
           <Messages className="text-3xl" />
-          <a
-            href="#contact"
-            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-          >
-            Messages
-          </a>
-        </li>
-        <li className="side-link btn btn-ghost">
+        </div>
+        <div className="side-link btn btn-ghost">
           <Notification className="text-3xl" />
-          <a
-            href="#contact"
-            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-          >
-            Notification
-          </a>
-        </li>
-        <li className="side-link btn btn-ghost">
+        </div>
+        <div className="side-link btn btn-ghost">
           <Create className="text-3xl" />
-          <a
-            href="#contact"
-            className={`w-4 ${sidebar ? "" : "hidden"} ml-3 text-xl`}
-          >
-            Create
-          </a>
-        </li>
-        <li className="side-link btn btn-ghost">
+        </div>
+        <div className="side-link btn btn-ghost">
           <img src="/assets/jack.png" alt="" className="w-6 h-6 rounded-full" />
-          <a href="#contact" className={`w-4 ${sidebar ? "" : "hidden"} ml-3`}>
-            Profile
-          </a>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 };

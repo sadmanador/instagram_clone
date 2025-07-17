@@ -1,3 +1,4 @@
+import { IoPaperPlaneOutline as PaperPlane } from "react-icons/io5";
 import {
   MdOutlineExplore as Explore,
   MdHomeFilled as Home,
@@ -7,6 +8,7 @@ import {
 } from "react-icons/md";
 
 import {
+  FaRegBookmark as Bookmark,
   FaPlusSquare as Create,
   FaHeart as Heart,
   FaInstagram as Instagram,
@@ -20,6 +22,7 @@ import { RiMenuLine as Menu } from "react-icons/ri";
 import { TbMessageCircleFilled as Text } from "react-icons/tb";
 
 export {
+  Bookmark,
   Create,
   Explore,
   Heart,
@@ -28,6 +31,7 @@ export {
   Menu,
   Messages,
   Notification,
+  PaperPlane,
   Reels,
   Search,
   Text,
