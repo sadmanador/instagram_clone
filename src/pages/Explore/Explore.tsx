@@ -1,4 +1,5 @@
 import { useGetData } from "../../hooks/useGetData";
+import type { ExploreImage } from "../../types";
 import { formatNumber } from "../../utils/formatNumber";
 import { getRowSpanIndices } from "../../utils/getRowSpanIndices";
 import { Heart, Text } from "../../utils/icons";
@@ -21,15 +22,16 @@ const Explore = () => {
   if (natureImages.isLoading) return <p>Loading...</p>;
   if (natureImages.error) return <p>Error occurred!</p>;
 
-  // Generate the indices to apply row-span-2 to
+
   const rowSpanIndices = getRowSpanIndices(natureImages.data.photos.length);
 
   return (
     <div className="flex justify-center items-center">
       <div className="w-[75%]">
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 justify-center">
-          {natureImages.data.photos.map((img: any, index: number) => {
+          {natureImages.data.photos.map((img: ExploreImage, index: number) => {
             const isRowSpan2 = rowSpanIndices.includes(index);
+
 
             return (
               <li

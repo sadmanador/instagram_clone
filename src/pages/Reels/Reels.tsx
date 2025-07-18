@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { formatNumber } from "../../utils/formatNumber";
 import { Bookmark, Notification, PaperPlane, Text } from "../../utils/icons";
 import { PEXELS_API_KEY } from "../../utils/keys";
+import type { ReelsProp, video_files } from "../../types";
 
 // Random popular search terms
 const QUERY_KEYWORDS = ["nature", "people", "travel", "animals", "technology"];
@@ -138,13 +139,20 @@ const Reels = () => {
               No videos found for this query. Try refreshing.
             </p>
           ) : (
-            videos.map((video: any, index: number) => {
+            videos.map((video: ReelsProp, index: number) => {
               const verticalFile =
-                video.video_files.find(
-                  (f: any) => f.height > f.width && f.quality === "sd"
-                ) || video.video_files[0];
+                (Array.isArray(video.video_files)
+                  ? video.video_files.find(
+                      (f) => f.height > f.width && f.quality === "sd"
+                    )
+                  : undefined) ||
+                (Array.isArray(video.video_files)
+                  ? video.video_files[0]
+                  : undefined);
 
               const post = postsData?.[index];
+
+              console.log("video:", video);
 
               return (
                 <div
@@ -152,7 +160,7 @@ const Reels = () => {
                   className="h-screen flex items-center justify-center snap-start relative overflow-visible"
                 >
                   <video
-                    ref={(el) => (observerRefs.current[index] = el)}
+                    ref={(el) => { observerRefs.current[index] = el; }}
                     className="h-full"
                     muted
                     loop

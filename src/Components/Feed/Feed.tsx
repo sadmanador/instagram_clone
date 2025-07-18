@@ -1,6 +1,8 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, type InfiniteData } from "@tanstack/react-query";
 import axios from "axios";
 import { useInView } from "react-intersection-observer";
+import type { PostProps } from "../../types";
+import { Bookmark, Notification, Text } from "../../utils/icons";
 
 export default function PostFeed() {
   const {
@@ -10,16 +12,21 @@ export default function PostFeed() {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteQuery({
+  } = useInfiniteQuery<
+    PostProps[],
+    unknown,
+    InfiniteData<PostProps[]>,
+    ["fakestore"]
+  >({
     queryKey: ["fakestore"],
     queryFn: async ({ pageParam = 0 }) => {
-      const res = await axios.get(
+      const res = await axios.get<PostProps[]>(
         `https://fakestoreapi.com/products?limit=5&skip=${pageParam}`
       );
       return res.data;
     },
     initialPageParam: 0,
-    getNextPageParam: (lastPage: any[], allPages: any[][]) => {
+    getNextPageParam: (lastPage, allPages) => {
       const totalFetched = allPages.flat().length;
       return lastPage.length === 0 ? undefined : totalFetched;
     },
@@ -27,18 +34,18 @@ export default function PostFeed() {
 
   const { ref, inView } = useInView();
 
-  // Fetch next page when last item is in view
   if (inView && hasNextPage && !isFetchingNextPage) {
     fetchNextPage();
   }
 
   if (isLoading) return <p className="text-center mt-10">Loading...</p>;
-  if (isError) return <p className="text-center text-red-500 mt-10">Error occurred!</p>;
+  if (isError)
+    return <p className="text-center text-red-500 mt-10">Error occurred!</p>;
 
   return (
     <div className="w-full max-w-[470px] flex flex-col mx-auto py-8">
       {data?.pages.map((page, pageIndex) =>
-        page.map((product: any, index: number) => {
+        page.map((product, index) => {
           const isLastItem =
             pageIndex === data.pages.length - 1 && index === page.length - 1;
           return (
@@ -54,7 +61,9 @@ export default function PostFeed() {
                   alt={`product_${product.id}`}
                   className="w-10 h-10 rounded-full object-cover"
                 />
-                <span className="font-semibold text-sm">product_{product.id}</span>
+                <span className="font-semibold text-sm">
+                  product_{product.id}
+                </span>
               </div>
 
               {/* Image */}
@@ -66,9 +75,15 @@ export default function PostFeed() {
 
               {/* Actions */}
               <div className="px-4 py-3 flex gap-4 text-xl">
-                <span>❤️</span>
-                <span>💬</span>
-                <span>📤</span>
+                <span>
+                  <Notification />
+                </span>
+                <span>
+                  <Text />
+                </span>
+                <span>
+                  <Bookmark />
+                </span>
               </div>
 
               {/* Content */}
