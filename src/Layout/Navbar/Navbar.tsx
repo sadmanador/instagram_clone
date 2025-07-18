@@ -1,21 +1,18 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { SidebarToggleContext } from "../../context/SidebarContext/SidebarContext";
 import {
-  Home,
+  Create,
   Explore,
-  Search,
-  Reels,
+  Home,
   Messages,
   Notification,
-  Create,
-  Thread,
-  Menu,
-  Instagram,
+  Reels,
+  Search
 } from "../../utils/icons";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const { theme, setTheme, sidebar, setSidebar } =
+  const {  sidebar, setSidebar } =
     useContext(SidebarToggleContext);
 
   return (

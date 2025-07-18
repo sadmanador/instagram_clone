@@ -1,9 +1,8 @@
 import { useContext } from "react";
-import { SidebarToggleContext } from "../context/SidebarContext/SidebarContext";
-import Home from "../pages/Home/Home";
-import Sidebar from "./Sidebar/Sidebar";
-import Navbar from "./Navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import { SidebarToggleContext } from "../context/SidebarContext/SidebarContext";
+import Navbar from "./Navbar/Navbar";
+import Sidebar from "./Sidebar/Sidebar";
 
 const Main = () => {
   const { sidebar } = useContext(SidebarToggleContext);

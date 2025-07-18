@@ -3,10 +3,10 @@ import axios from "axios";
 import { useCallback, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
+import type { ReelsProp } from "../../types";
 import { formatNumber } from "../../utils/formatNumber";
 import { Bookmark, Notification, PaperPlane, Text } from "../../utils/icons";
 import { PEXELS_API_KEY } from "../../utils/keys";
-import type { ReelsProp, video_files } from "../../types";
 
 // Random popular search terms
 const QUERY_KEYWORDS = ["nature", "people", "travel", "animals", "technology"];

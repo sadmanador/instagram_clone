@@ -1,6 +1,12 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+import type { UseInfiniteImageParams } from "../types";
 
-export const useInfiniteImage = ({ queryKey, url, params, headers }) => {
+export const useInfiniteImage = ({
+  queryKey,
+  url,
+  params,
+  headers,
+}: UseInfiniteImageParams) => {
   return useInfiniteQuery({
     queryKey,
     queryFn: async ({ pageParam = 1 }) => {
@@ -11,7 +17,7 @@ export const useInfiniteImage = ({ queryKey, url, params, headers }) => {
         }
       );
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
       return response.json();
     },

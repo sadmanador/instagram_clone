@@ -48,3 +48,14 @@ export interface PostProps {
 
 };
 
+export interface UseInfiniteImageParams {
+  queryKey: unknown[];
+  url: string;
+  params: {
+    per_page: number;
+    query: string;
+    orientation: string;
+  };
+  headers?: Record<string, string>;
+}
+
