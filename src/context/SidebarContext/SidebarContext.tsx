@@ -10,7 +10,7 @@ const defaultContextValue: SidebarContextProps = {
 
 export const SidebarToggleContext = createContext(defaultContextValue);
 const SidebarContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [sidebar, setSidebar] = useState<boolean>(false);
+  const [sidebar, setSidebar] = useState<boolean>(true);
 
   const [theme, setTheme] = useState<string>("light");
 

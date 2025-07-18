@@ -18,7 +18,8 @@ export default function PostFeed() {
       );
       return res.data;
     },
-    getNextPageParam: (lastPage, allPages) => {
+    initialPageParam: 0,
+    getNextPageParam: (lastPage: any[], allPages: any[][]) => {
       const totalFetched = allPages.flat().length;
       return lastPage.length === 0 ? undefined : totalFetched;
     },

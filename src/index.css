@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: light --default, black --prefersdark, cupcake;
+}
 
 .sidebar {
   @apply hidden md:block fixed top-0 h-screen pt-6 lg:pl-[2%] pl-[1%];
