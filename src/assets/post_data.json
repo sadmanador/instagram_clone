@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "type": "carousel",
+    "media": [
+      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
+      "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg",
+      "https://images.pexels.com/photos/3023101/pexels-photo-3023101.jpeg"
+    ],
+    "caption": "Weekend getaway memories 🌄📸",
+    "user": {
+      "id": 101,
+      "username": "travel_guy",
+      "avatar": "https://i.pravatar.cc/150?u=101"
+    },
+    "likes": 432
+  },
+  {
+    "id": 2,
+    "type": "video",
+    "media": ["/assets/video/sample_1.mp4"],
+    "caption": "Push yourself every day 💪 #NoExcuses",
+    "user": {
+      "id": 102,
+      "username": "zoe_fit",
+      "avatar": "https://i.pravatar.cc/150?u=102"
+    },
+    "likes": 1120
+  },
+  {
+    "id": 3,
+    "type": "image",
+    "media": [
+      "https://images.pexels.com/photos/1230673/pexels-photo-1230673.jpeg"
+    ],
+    "caption": "Just breathe 🍃 #mindfulness",
+    "user": {
+      "id": 103,
+      "username": "calm_days",
+      "avatar": "https://i.pravatar.cc/150?u=103"
+    },
+    "likes": 201
+  },
+  {
+    "id": 4,
+    "type": "image",
+    "media": [
+      "https://images.pexels.com/photos/736230/pexels-photo-736230.jpeg"
+    ],
+    "caption": "Nothing beats golden hour 🌇",
+    "user": {
+      "id": 104,
+      "username": "snapqueen",
+      "avatar": "https://i.pravatar.cc/150?u=104"
+    },
+    "likes": 879
+  },
+  {
+    "id": 5,
+    "type": "video",
+    "media": ["/assets/video/sample_1.mp4"],
+    "caption": "Learn to dance like nobody’s watching 🎶",
+    "user": {
+      "id": 105,
+      "username": "dancefloor_d",
+      "avatar": "https://i.pravatar.cc/150?u=105"
+    },
+    "likes": 1583
+  },
+  {
+    "id": 6,
+    "type": "carousel",
+    "media": [
+      "https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg",
+      "https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg"
+    ],
+    "caption": "Nature heals 🌿 #greenescape",
+    "user": {
+      "id": 106,
+      "username": "earthling",
+      "avatar": "https://i.pravatar.cc/150?u=106"
+    },
+    "likes": 623
+  },
+  {
+    "id": 7,
+    "type": "image",
+    "media": [
+      "https://images.pexels.com/photos/1809644/pexels-photo-1809644.jpeg"
+    ],
+    "caption": "Mood: cozy 📚☕️",
+    "user": {
+      "id": 107,
+      "username": "bookishbabe",
+      "avatar": "https://i.pravatar.cc/150?u=107"
+    },
+    "likes": 314
+  },
+  {
+    "id": 8,
+    "type": "video",
+    "media": ["/assets/video/sample_1.mp4"],
+    "caption": "Quick 5-minute morning stretch 🔁",
+    "user": {
+      "id": 108,
+      "username": "wellness_wave",
+      "avatar": "https://i.pravatar.cc/150?u=108"
+    },
+    "likes": 487
+  },
+  {
+    "id": 9,
+    "type": "image",
+    "media": [
+      "https://images.pexels.com/photos/2698519/pexels-photo-2698519.jpeg"
+    ],
+    "caption": "Caffeine = happiness ☕️✨",
+    "user": {
+      "id": 109,
+      "username": "barista_joe",
+      "avatar": "https://i.pravatar.cc/150?u=109"
+    },
+    "likes": 277
+  },
+  {
+    "id": 10,
+    "type": "carousel",
+    "media": [
+      "https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg",
+      "https://images.pexels.com/photos/2649403/pexels-photo-2649403.jpeg",
+      "https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg"
+    ],
+    "caption": "Skatepark Sundays 🛹 #freedom",
+    "user": {
+      "id": 110,
+      "username": "grindcity",
+      "avatar": "https://i.pravatar.cc/150?u=110"
+    },
+    "likes": 690
+  },
+  {
+    "id": 11,
+    "type": "image",
+    "media": [
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
+    ],
+    "caption": "Let the mountains move you ⛰️",
+    "user": {
+      "id": 111,
+      "username": "mountain_calling",
+      "avatar": "https://i.pravatar.cc/150?u=111"
+    },
+    "likes": 842
+  },
+  {
+    "id": 12,
+    "type": "video",
+    "media": ["/assets/video/sample_1.mp4"],
+    "caption": "Day in my life vlog 🎬 #reel",
+    "user": {
+      "id": 112,
+      "username": "vloglife",
+      "avatar": "https://i.pravatar.cc/150?u=112"
+    },
+    "likes": 1502
+  },
+  {
+    "id": 13,
+    "type": "image",
+    "media": [
+      "https://images.pexels.com/photos/2127039/pexels-photo-2127039.jpeg"
+    ],
+    "caption": "Neon dreams ✨",
+    "user": {
+      "id": 113,
+      "username": "city_lights",
+      "avatar": "https://i.pravatar.cc/150?u=113"
+    },
+    "likes": 521
+  },
+  {
+    "id": 14,
+    "type": "carousel",
+    "media": [
+      "https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg",
+      "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg"
+    ],
+    "caption": "Throwback to summer streets 🍦",
+    "user": {
+      "id": 114,
+      "username": "retro_rosa",
+      "avatar": "https://i.pravatar.cc/150?u=114"
+    },
+    "likes": 389
+  },
+  {
+    "id": 15,
+    "type": "image",
+    "media": [
+      "https://images.pexels.com/photos/358574/pexels-photo-358574.jpeg"
+    ],
+    "caption": "Pet day at the park 🐾",
+    "user": {
+      "id": 115,
+      "username": "pawsitivevibes",
+      "avatar": "https://i.pravatar.cc/150?u=115"
+    },
+    "likes": 476
+  }
+]

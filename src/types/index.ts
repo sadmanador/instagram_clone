@@ -45,8 +45,20 @@ export interface PostProps {
   title: string;
   price: number;
   image: string;
+}
 
-};
+export interface Post {
+  id: number;
+  type: "image" | "carousel" | "video";
+  media: string[];
+  caption: string;
+  user: {
+    id: number;
+    username: string;
+    avatar: string;
+  };
+  likes: number;
+}
 
 export interface UseInfiniteImageParams {
   queryKey: unknown[];
@@ -58,4 +70,3 @@ export interface UseInfiniteImageParams {
   };
   headers?: Record<string, string>;
 }
-

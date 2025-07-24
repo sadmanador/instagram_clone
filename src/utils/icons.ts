@@ -1,4 +1,9 @@
-import { IoPaperPlaneOutline as PaperPlane } from "react-icons/io5";
+import {
+  IoVolumeMute as Mute,
+  IoPaperPlaneOutline as PaperPlane,
+  IoVolumeMediumSharp as Unmute,
+} from "react-icons/io5";
+
 import {
   MdOutlineExplore as Explore,
   MdHomeFilled as Home,
@@ -30,10 +35,12 @@ export {
   Instagram,
   Menu,
   Messages,
+  Mute,
   Notification,
   PaperPlane,
   Reels,
   Search,
   Text,
   Thread,
+  Unmute,
 };
