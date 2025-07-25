@@ -40,12 +40,7 @@ export interface ReelsProp {
   video_files: video_files;
 }
 
-export interface PostProps {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-}
+
 
 export interface Post {
   id: number;

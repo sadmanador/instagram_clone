@@ -2,7 +2,7 @@ import { useInfiniteQuery, type InfiniteData } from "@tanstack/react-query";
 import axios from "axios";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect, useRef } from "react";
-import type { Post, PostProps } from "../../types";
+import type { Post } from "../../types";
 import { Bookmark, Notification, Text } from "../../utils/icons";
 
 // Import your Mute and Unmute icons components here
@@ -11,33 +11,46 @@ import { Mute, Unmute } from "../../utils/icons";
 const PAGE_SIZE = 5;
 
 export default function PostFeed() {
-  const {
-    data,
-    isLoading,
-    isError,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery<
-    PostProps[],
-    unknown,
-    InfiniteData<Post[]>,
-    ["posts"]
-  >({
-    queryKey: ["posts"],
-    queryFn: async (context) => {
-      const pageParam = (context.pageParam ?? 0) as number;
-      const res = await axios.get<PostProps[]>("/src/assets/post_data.json");
-      const start = pageParam;
-      const end = start + PAGE_SIZE;
-      return res.data.slice(start, end);
-    },
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, allPages) => {
-      const totalFetched = allPages.flat().length;
-      return lastPage.length < PAGE_SIZE ? undefined : totalFetched;
-    },
-  });
+  
+  
+const {
+  data,
+  isLoading,
+  isError,
+  fetchNextPage,
+  hasNextPage,
+  isFetchingNextPage,
+} = useInfiniteQuery<
+  Post[],                // type of one page (an array of posts)
+  unknown,               // error type
+  InfiniteData<Post[]>,  // full data type with pages
+  ["posts"],             // query key
+  number                 // pageParam type
+>({
+  queryKey: ["posts"],
+  queryFn: async ({ pageParam = 0 }) => {
+    const res = await axios.get<Post[]>("/src/assets/post_data.json");
+
+    if (!Array.isArray(res.data)) {
+      throw new Error("Invalid data format");
+    }
+
+    const start = pageParam;
+    const end = start + PAGE_SIZE;
+    return res.data.slice(start, end);
+  },
+  initialPageParam: 0,
+  getNextPageParam: (lastPage, allPages) => {
+    const totalFetched = allPages.flat().length;
+    return lastPage.length < PAGE_SIZE ? undefined : totalFetched;
+  },
+});
+
+
+
+
+
+
 
   const { ref, inView } = useInView();
 
