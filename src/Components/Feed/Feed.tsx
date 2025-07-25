@@ -29,7 +29,7 @@ const {
 >({
   queryKey: ["posts"],
   queryFn: async ({ pageParam = 0 }) => {
-    const res = await axios.get<Post[]>("/src/assets/post_data.json");
+    const res = await axios.get<Post[]>("/assets/post_data.json");
 
     if (!Array.isArray(res.data)) {
       throw new Error("Invalid data format");

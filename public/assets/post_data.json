@@ -18,7 +18,7 @@
   {
     "id": 2,
     "type": "video",
-    "media": ["/assets/video/sample_1.mp4"],
+    "media": ["/assets/videos/video1.mp4"],
     "caption": "Push yourself every day 💪 #NoExcuses",
     "user": {
       "id": 102,
