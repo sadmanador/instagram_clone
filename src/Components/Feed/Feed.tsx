@@ -11,46 +11,38 @@ import { Mute, Unmute } from "../../utils/icons";
 const PAGE_SIZE = 5;
 
 export default function PostFeed() {
-  
-  
-const {
-  data,
-  isLoading,
-  isError,
-  fetchNextPage,
-  hasNextPage,
-  isFetchingNextPage,
-} = useInfiniteQuery<
-  Post[],                // type of one page (an array of posts)
-  unknown,               // error type
-  InfiniteData<Post[]>,  // full data type with pages
-  ["posts"],             // query key
-  number                 // pageParam type
->({
-  queryKey: ["posts"],
-  queryFn: async ({ pageParam = 0 }) => {
-    const res = await axios.get<Post[]>("/assets/post_data.json");
+  const {
+    data,
+    isLoading,
+    isError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery<
+    Post[],
+    unknown,
+    InfiniteData<Post[]>, 
+    ["posts"],
+    number
+  >({
+    queryKey: ["posts"],
+    queryFn: async ({ pageParam = 0 }) => {
+      const res = await axios.get<Post[]>("/assets/post_data.json");
 
-    if (!Array.isArray(res.data)) {
-      throw new Error("Invalid data format");
-    }
+      if (!Array.isArray(res.data)) {
+        throw new Error("Invalid data format");
+      }
 
-    const start = pageParam;
-    const end = start + PAGE_SIZE;
-    return res.data.slice(start, end);
-  },
-  initialPageParam: 0,
-  getNextPageParam: (lastPage, allPages) => {
-    const totalFetched = allPages.flat().length;
-    return lastPage.length < PAGE_SIZE ? undefined : totalFetched;
-  },
-});
-
-
-
-
-
-
+      const start = pageParam;
+      const end = start + PAGE_SIZE;
+      return res.data.slice(start, end);
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages) => {
+      const totalFetched = allPages.flat().length;
+      return lastPage.length < PAGE_SIZE ? undefined : totalFetched;
+    },
+  });
 
   const { ref, inView } = useInView();
 
@@ -174,14 +166,14 @@ const {
                         <div
                           key={idx}
                           id={slideId}
-                          className="carousel-item relative w-full"
+                          className="carousel-item relative w-full group"
                         >
                           <img
                             src={url}
                             alt={`carousel_${idx}`}
                             className="w-full h-[500px] object-cover"
                           />
-                          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <a
                               href={`#post-${post.id}-slide-${prev}`}
                               className="btn btn-circle btn-sm"

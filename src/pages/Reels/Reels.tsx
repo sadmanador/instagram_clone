@@ -129,6 +129,8 @@ const Reels = () => {
       </p>
     );
 
+    console.log(videos)
+
   return (
     <div className="lg:w-[45%] mx-auto flex flex-col items-center">
       <div className="h-screen overflow-y-scroll snap-y snap-mandatory text-white bg-black overflow-x-visible">
@@ -181,7 +183,8 @@ const Reels = () => {
                       [video.id]: !(prev[video.id] ?? true),
                     }))
                   }
-                  className="text-2xl absolute rounded-full top-4 right-4 bg-s-800 bg-opacity-50 text-white rounded-full px-3 py-1  z-50"
+                  className="text-2xl absolute rounded-full top-4 right-4 bg-gray-800 bg-opacity-50 text-white px-3 py-1 z-50"
+                  aria-label={mutedStates[video.id] ?? true ? "Unmute video" : "Mute video"}
                 >
                   {mutedStates[video.id] ?? true ? <Unmute /> : <Mute />}
                 </button>

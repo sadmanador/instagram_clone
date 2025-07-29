@@ -23,13 +23,14 @@ const Explore = () => {
   if (natureImages.error) return <p>Error occurred!</p>;
 
 
-  const rowSpanIndices = getRowSpanIndices(natureImages.data.photos.length);
+  const photos = (natureImages.data as { photos: ExploreImage[] }).photos;
+  const rowSpanIndices = getRowSpanIndices(photos.length);
 
   return (
     <div className="flex justify-center items-center">
       <div className="w-[75%]">
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 justify-center">
-          {natureImages.data.photos.map((img: ExploreImage, index: number) => {
+          {photos.map((img: ExploreImage, index: number) => {
             const isRowSpan2 = rowSpanIndices.includes(index);
 
 

@@ -65,3 +65,11 @@ export interface UseInfiniteImageParams {
   };
   headers?: Record<string, string>;
 }
+
+export interface StoryProps {
+  id: number;
+  username: string;
+  avatar: string;
+  stories: string[];
+  seen: boolean;
+}
