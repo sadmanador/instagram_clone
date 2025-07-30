@@ -4,8 +4,7 @@
     "username": "gordon",
     "avatar": "https://img.daisyui.com/images/profile/demo/gordon@192.webp",
     "stories": [
-      "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",
-      "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg"
+      "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg"
     ],
     "seen": false
   },
@@ -23,8 +22,7 @@
     "username": "distracted1",
     "avatar": "https://img.daisyui.com/images/profile/demo/distracted1@192.webp",
     "stories": [
-      "https://images.pexels.com/photos/1704120/pexels-photo-1704120.jpeg",
-      "https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg"
+      "https://images.pexels.com/photos/1704120/pexels-photo-1704120.jpeg"
     ],
     "seen": false
   },
