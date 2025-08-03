@@ -3,38 +3,28 @@
     "id": 1,
     "username": "gordon",
     "avatar": "https://img.daisyui.com/images/profile/demo/gordon@192.webp",
-    "stories": [
-      "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg",
-      "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg"
-    ],
+    "stories": "https://images.pexels.com/photos/22748192/pexels-photo-22748192.jpeg?_gl=1*dndpy1*_ga*MTAwNDA0Mzk4Mi4xNzUyNDIyNTM1*_ga_8JE65Q40S6*czE3NTQyNDcxNjUkbzMkZzEkdDE3NTQyNDcxNjgkajU3JGwwJGgw",
     "seen": false
   },
   {
     "id": 2,
     "username": "idiotsandwich",
     "avatar": "https://img.daisyui.com/images/profile/demo/idiotsandwich@192.webp",
-    "stories": [
-      "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg"
-    ],
+    "stories": "https://images.pexels.com/photos/32585276/pexels-photo-32585276.jpeg?_gl=1*1szoq2b*_ga*MTAwNDA0Mzk4Mi4xNzUyNDIyNTM1*_ga_8JE65Q40S6*czE3NTQyNDcxNjUkbzMkZzEkdDE3NTQyNDcyMjQkajEkbDAkaDA.",
     "seen": true
   },
   {
     "id": 3,
     "username": "distracted1",
     "avatar": "https://img.daisyui.com/images/profile/demo/distracted1@192.webp",
-    "stories": [
-      "https://images.pexels.com/photos/1704120/pexels-photo-1704120.jpeg",
-      "https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg"
-    ],
+    "stories": "https://images.pexels.com/photos/18810025/pexels-photo-18810025.jpeg?_gl=1*10vhay8*_ga*MTAwNDA0Mzk4Mi4xNzUyNDIyNTM1*_ga_8JE65Q40S6*czE3NTQyNDcxNjUkbzMkZzEkdDE3NTQyNDczNzEkajE1JGwwJGgw",
     "seen": false
   },
   {
     "id": 4,
     "username": "distracted2",
     "avatar": "https://img.daisyui.com/images/profile/demo/distracted2@192.webp",
-    "stories": [
-      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg"
-    ],
+    "stories": "https://images.pexels.com/photos/32360758/pexels-photo-32360758.jpeg?_gl=1*1iycwrw*_ga*MTAwNDA0Mzk4Mi4xNzUyNDIyNTM1*_ga_8JE65Q40S6*czE3NTQyNDcxNjUkbzMkZzEkdDE3NTQyNDcyOTIkajIzJGwwJGgw",
     "seen": true
   }
 ]

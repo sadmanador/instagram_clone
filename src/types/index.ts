@@ -70,6 +70,6 @@ export interface StoryProps {
   id: number;
   username: string;
   avatar: string;
-  stories: string[];
+  stories: string;
   seen: boolean;
 }

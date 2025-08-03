@@ -1,145 +1,160 @@
-import { useEffect, useState, useRef } from "react";
-import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
 import { useInfiniteStories } from "../../hooks/useInfiniteStories";
 import type { StoryProps } from "../../types";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const AUTO_SLIDE_DURATION = 8000;
 
 const StoryViewer = () => {
   const { data, isLoading } = useInfiniteStories();
-  const storyList: StoryProps[] = data?.pages.flat() || [];
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [progressKey, setProgressKey] = useState(0);
 
-  const [currentUserIndex, setCurrentUserIndex] = useState(0);
-  const [storyIndex, setStoryIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const navigate = useNavigate();
 
-  const [sliderRef, sliderInstance] = useKeenSlider<HTMLDivElement>({
-    initial: 0,
-    slideChanged(s) {
-      setCurrentUserIndex(s.track.details.rel);
-      setStoryIndex(0);
-      setProgress(0);
-    },
-    mode: "snap",
-    slides: {
-      perView: 1.5,
-      spacing: 16,
-    },
-    rubberband: false,
-  });
+  const [ref, slider] = useKeenSlider<HTMLDivElement>(
+    {
+      slides: {
+        perView: 3,
+        spacing: 25,
+      },
+      loop: true,
+      slideChanged(sliderInstance) {
+        const relIndex = sliderInstance.track.details.rel;
+        setCurrentSlide(relIndex);
+        setProgressKey((prev) => prev + 1);
+      },
+    }
+  );
 
-  // Autoplay logic
   useEffect(() => {
-    if (!storyList[currentUserIndex]) return;
+    if (!slider) return;
 
-    setProgress(0);
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    timerRef.current = setInterval(() => {
+      slider.current?.next();
+    }, AUTO_SLIDE_DURATION);
 
-    intervalRef.current = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          const user = storyList[currentUserIndex];
-          if (storyIndex + 1 < user.stories.length) {
-            setStoryIndex((i) => i + 1);
-            return 0;
-          } else {
-            const nextIndex =
-              currentUserIndex + 1 < storyList.length ? currentUserIndex + 1 : 0;
-            sliderInstance.current?.moveToIdx(nextIndex);
-            return 0;
-          }
-        }
-        return prev + 1;
-      });
-    }, 50);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [slider]);
 
-    return () => clearInterval(intervalRef.current!);
-  }, [currentUserIndex, storyIndex, storyList, sliderInstance]);
-
-  if (isLoading) {
-    return <div className="text-white text-center py-10">Loading...</div>;
-  }
+  const middleIndex = currentSlide + 1;
+  const slideMinWidth = `calc((100% / 3) - ${25 * (2 / 3)}px)`;
 
   return (
-    <div className="w-screen h-screen bg-black text-white relative overflow-hidden flex items-center justify-center">
-      {/* Slider */}
-      <div ref={sliderRef} className="keen-slider w-full max-w-4xl px-6">
-        {storyList.map((user, idx) => {
-          const isCurrent = idx === currentUserIndex;
-          const image = user.stories[isCurrent ? storyIndex : 0];
+    <div className="relative min-h-screen flex items-center justify-center bg-black">
+      {/* Cross button */}
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-4 right-4 z-30 text-white text-3xl font-bold hover:text-gray-300"
+        aria-label="Close"
+      >
+        &times;
+      </button>
 
-          return (
-            <div
-              key={user.id}
-              className="keen-slider__slide relative flex items-center justify-center"
-            >
+      <div className="w-[65%] overflow-hidden relative">
+        <div ref={ref} className="keen-slider relative">
+          {isLoading && <div>Loading...</div>}
+          {data?.pages?.[0].map((story: StoryProps, index: number) => {
+            const isCenter = index === middleIndex;
+
+            return (
               <div
-                className={`relative w-full h-[480px] rounded-xl overflow-hidden transition-all duration-300 ${
-                  isCurrent ? "scale-100 z-30" : "scale-90 z-10"
-                }`}
+                className="keen-slider__slide relative"
+                key={story.id}
+                style={{ minWidth: slideMinWidth }}
               >
-                {/* Story Image */}
-                <img
-                  src={image}
-                  alt="story"
-                  className={`w-full h-full object-cover ${
-                    !isCurrent ? "brightness-50" : ""
-                  }`}
-                />
-
-                {/* Progress bar */}
-                {isCurrent && (
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gray-700 z-40">
-                    <div
-                      className="h-full bg-primary"
-                      style={{
-                        width: `${progress}%`,
-                        transition: "width 50ms linear",
-                      }}
-                    />
-                  </div>
-                )}
-
-                {/* Avatar & username */}
-                {isCurrent && (
+                {isCenter ? (
                   <>
-                    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 bg-black bg-opacity-60 px-3 py-1 rounded-full">
-                      <div className="w-8 h-8 rounded-full overflow-hidden ring-2 ring-primary">
-                        <img
-                          src={user.avatar}
-                          alt={user.username}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <span className="text-sm font-semibold">{user.username}</span>
-                    </div>
-
-                    {/* Reply input */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 w-full max-w-xs px-4">
-                      <input
-                        type="text"
-                        placeholder={`Reply to ${user.username}`}
-                        className="w-full px-4 py-2 rounded-full border border-white bg-transparent text-white placeholder-white text-sm focus:outline-none"
+                    {/* Progress bar */}
+                    <div
+                      key={progressKey}
+                      className="absolute top-0 left-0 w-full h-1 bg-gray-700 rounded-full overflow-hidden z-10"
+                    >
+                      <div
+                        className="h-full bg-white"
+                        style={{
+                          animation: `progress ${AUTO_SLIDE_DURATION}ms linear forwards`,
+                        }}
                       />
                     </div>
+
+                    {/* Story image */}
+                    <img
+                      src={story.stories}
+                      alt={story.username}
+                      className="rounded-xl object-cover w-full h-[400px]"
+                    />
+
+                    {/* Avatar + Username at top */}
+                    <div className="absolute top-4 left-4 flex items-center space-x-3 z-20 bg-black bg-opacity-50 rounded-full px-3 py-1">
+                      <img
+                        src={story.avatar}
+                        alt={`${story.username} avatar`}
+                        className="w-10 h-10 rounded-full object-cover border-2 border-white"
+                      />
+                      <span className="text-white font-semibold text-lg select-none">
+                        {story.username}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* Blurred and faded story image */}
+                    <img
+                      src={story.stories}
+                      alt={story.username}
+                      className="rounded-xl object-cover w-full h-[400px] filter brightness-75 blur-sm opacity-60"
+                    />
+                    {/* Avatar circle in center */}
+                    <img
+                      src={story.avatar}
+                      alt={`${story.username} avatar`}
+                      className="absolute top-1/2 left-1/2 w-20 h-20 rounded-full border-4 border-white transform -translate-x-1/2 -translate-y-1/2 object-cover shadow-lg"
+                    />
                   </>
                 )}
-
-                {/* Avatar on dimmed slides */}
-                {!isCurrent && (
-                  <div className="absolute top-[45%] left-24 w-24 h-24 rounded-full ring-2 ring-primary overflow-hidden z-40">
-                    <img
-                      src={user.avatar}
-                      alt={user.username}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+
+        {/* Left arrow */}
+        <button
+          onClick={() => slider.current?.prev()}
+          className="absolute top-1/2 left-0 z-30 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-r-lg hover:bg-opacity-80"
+          aria-label="Previous story"
+          style={{ userSelect: "none" }}
+        >
+          &#8592;
+        </button>
+
+        {/* Right arrow */}
+        <button
+          onClick={() => slider.current?.next()}
+          className="absolute top-1/2 right-0 z-30 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-l-lg hover:bg-opacity-80"
+          aria-label="Next story"
+          style={{ userSelect: "none" }}
+        >
+          &#8594;
+        </button>
       </div>
+
+      <style>
+        {`
+          @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+          .keen-slider__slide:not(.keen-slider__slide--clone) {
+            opacity: 1 !important;
+          }
+        `}
+      </style>
     </div>
   );
 };
