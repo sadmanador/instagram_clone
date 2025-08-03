@@ -15,20 +15,25 @@ const StoryViewer = () => {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const navigate = useNavigate();
 
-  const [ref, slider] = useKeenSlider<HTMLDivElement>(
-    {
+ const [ref, slider] = useKeenSlider<HTMLDivElement>({
+  loop: true,
+  slides: {
+    perView: 3,
+  },
+  breakpoints: {
+    "(max-width: 768px)": {
       slides: {
-        perView: 3,
-        spacing: 25,
+        perView: 2,
       },
-      loop: true,
-      slideChanged(sliderInstance) {
-        const relIndex = sliderInstance.track.details.rel;
-        setCurrentSlide(relIndex);
-        setProgressKey((prev) => prev + 1);
-      },
-    }
-  );
+    },
+  },
+  slideChanged(sliderInstance) {
+    const relIndex = sliderInstance.track.details.rel;
+    setCurrentSlide(relIndex);
+    setProgressKey((prev) => prev + 1);
+  },
+});
+
 
   useEffect(() => {
     if (!slider) return;
@@ -64,7 +69,7 @@ const StoryViewer = () => {
 
             return (
               <div
-                className="keen-slider__slide relative"
+                className="keen-slider__slide relative mx-2"
                 key={story.id}
                 style={{ minWidth: slideMinWidth }}
               >
@@ -91,7 +96,7 @@ const StoryViewer = () => {
                     />
 
                     {/* Avatar + Username at top */}
-                    <div className="absolute top-4 left-4 flex items-center space-x-3 z-20 bg-black bg-opacity-50 rounded-full px-3 py-1">
+                    <div className="absolute top-4 left-4 flex items-center space-x-3 z-20  bg-opacity-50 rounded-full px-3 py-1">
                       <img
                         src={story.avatar}
                         alt={`${story.username} avatar`}
