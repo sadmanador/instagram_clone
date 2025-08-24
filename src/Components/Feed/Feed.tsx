@@ -21,7 +21,7 @@ export default function PostFeed() {
   } = useInfiniteQuery<
     Post[],
     unknown,
-    InfiniteData<Post[]>, 
+    InfiniteData<Post[]>,
     ["posts"],
     number
   >({
@@ -65,16 +65,12 @@ export default function PostFeed() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, [data]);
 
-  // Video refs
   const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
 
-  // Muted states using your style and logic:
   const [mutedStates, setMutedStates] = useState<Record<number, boolean>>({});
 
-  // Pause/play states per video:
   const [pausedPosts, setPausedPosts] = useState<Record<number, boolean>>({});
 
-  // Toggle play/pause when clicking video
   const togglePlayPause = (postId: number) => {
     const video = videoRefs.current.get(postId);
     if (!video) return;
@@ -88,7 +84,6 @@ export default function PostFeed() {
     }
   };
 
-  // When data changes, initialize muted and play videos
   useEffect(() => {
     data?.pages.flat().forEach((post) => {
       if (post.type === "video") {
@@ -106,7 +101,6 @@ export default function PostFeed() {
     });
   }, [data]);
 
-  // Sync mute/unmute with actual video element when mutedStates changes
   useEffect(() => {
     Object.entries(mutedStates).forEach(([postIdStr, muted]) => {
       const postId = Number(postIdStr);

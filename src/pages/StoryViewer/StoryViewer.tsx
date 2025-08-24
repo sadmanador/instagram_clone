@@ -66,7 +66,6 @@ const StoryViewer = () => {
           {isLoading && <div>Loading...</div>}
           {data?.pages?.[0].map((story: StoryProps, index: number) => {
             const isCenter = index === middleIndex;
-
             return (
               <div
                 className="keen-slider__slide relative mx-2"
@@ -126,6 +125,7 @@ const StoryViewer = () => {
               </div>
             );
           })}
+          
         </div>
 
         {/* Left arrow */}

@@ -22,7 +22,6 @@ const Explore = () => {
   if (natureImages.isLoading) return <p>Loading...</p>;
   if (natureImages.error) return <p>Error occurred!</p>;
 
-
   const photos = (natureImages.data as { photos: ExploreImage[] }).photos;
   const rowSpanIndices = getRowSpanIndices(photos.length);
 
@@ -32,8 +31,6 @@ const Explore = () => {
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 justify-center">
           {photos.map((img: ExploreImage, index: number) => {
             const isRowSpan2 = rowSpanIndices.includes(index);
-
-
             return (
               <li
                 key={img.id}

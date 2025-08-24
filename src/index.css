@@ -8,7 +8,7 @@
   width: 15%;
 }
 
-.shortcut-links img {
+.shortcut-link img {
   @apply w-5 mr-5;
 }
 

@@ -109,16 +109,6 @@ const Reels = () => {
     return () => observer.disconnect();
   }, [videos, handleIntersection]);
 
-  useEffect(() => {
-    if (videos.length > 0) {
-      const lastVideo = videos[videos.length - 1];
-      const videoId = lastVideo.id;
-      const userId = lastVideo.user?.id;
-
-      console.log("Loaded new video:", videoId, "| User:", userId);
-    }
-  }, [videos]);
-
   if (isLoading || postsLoading)
     return <p className="text-center mt-10">Loading...</p>;
 
@@ -129,7 +119,7 @@ const Reels = () => {
       </p>
     );
 
-    console.log(videos)
+  console.log(videos);
 
   return (
     <div className="lg:w-[45%] mx-auto flex flex-col items-center">
@@ -184,7 +174,11 @@ const Reels = () => {
                     }))
                   }
                   className="text-2xl absolute rounded-full top-4 right-4 bg-gray-800 bg-opacity-50 text-white px-3 py-1 z-50"
-                  aria-label={mutedStates[video.id] ?? true ? "Unmute video" : "Mute video"}
+                  aria-label={
+                    mutedStates[video.id] ?? true
+                      ? "Unmute video"
+                      : "Mute video"
+                  }
                 >
                   {mutedStates[video.id] ?? true ? <Unmute /> : <Mute />}
                 </button>
