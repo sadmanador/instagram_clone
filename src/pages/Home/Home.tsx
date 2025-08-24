@@ -1,6 +1,7 @@
-import Feed from "../../components/Feed/Feed";
+import PostFeed from "../../components/Feed/Feed";
 import Story from "../../components/Story/Story";
 import Suggestions from "../../components/Suggestions/Suggestions";
+
 
 const Home = () => {
   return (
@@ -9,7 +10,7 @@ const Home = () => {
       <div className="relative flex flex-col items-center">
         <div className="flex justify-center w-full">
           <div className="w-full max-w-[600px]">
-            <Feed />
+            <PostFeed />
           </div>
         </div>
 
